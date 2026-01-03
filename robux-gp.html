@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLINT STORE - Robux Gamepass</title>
+<style>
+body{margin:0;font-family:Segoe UI,sans-serif;background:linear-gradient(180deg,#0b0720,#1a1240);color:#fff}
+.wrap{padding:20px}
+.form{background:linear-gradient(160deg,#2d2370,#1c144a);border-radius:22px;padding:24px;box-shadow:0 20px 45px rgba(0,0,0,.45)}
+h2{text-align:center;font-weight:900}
+input{width:100%;padding:14px;margin-top:12px;border-radius:14px;border:none}
+.note{font-size:13px;color:#ffd84d;margin-top:14px;line-height:1.5}
+.payment{margin-top:22px}
+.payment-title{font-weight:800;margin-bottom:12px}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pay-item{background:#1c144a;padding:14px;border-radius:14px;display:flex;align-items:center;gap:12px;cursor:pointer;border:2px solid transparent}
+.pay-item:hover{border-color:#ffd84d}
+.pay-item input{display:none}
+.pay-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#ffd84d,#ffb703);display:flex;align-items:center;justify-content:center;font-weight:900;color:#2b1b00}
+.pay-item input:checked + .pay-icon{outline:3px solid #ffd84d}
+button{width:100%;margin-top:26px;padding:16px;border:none;border-radius:16px;background:linear-gradient(135deg,#ffd84d,#ffb703);font-weight:900;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="form">
+
+<h2>💎 Robux Gamepass</h2>
+
+<input id="usn" placeholder="Username">
+<input id="pw" placeholder="Password">
+<input id="topup" placeholder="Jumlah Robux">
+<input id="link" placeholder="Link Gamepass">
+<input id="wa" placeholder="WhatsApp Aktif">
+
+<div class="note">
+⚠️ Pembelian dikenakan pajak Roblox 30%<br>
+Jangan login selama pengerjaan.
+</div>
+
+<div class="payment">
+<div class="payment-title">💳 Metode Pembayaran</div>
+<div class="pay-grid">
+<label class="pay-item"><input type="radio" name="pay" value="QRIS"><div class="pay-icon">QR</div>QRIS</label>
+<label class="pay-item"><input type="radio" name="pay" value="DANA"><div class="pay-icon">DA</div>DANA</label>
+<label class="pay-item"><input type="radio" name="pay" value="OVO"><div class="pay-icon">OV</div>OVO</label>
+<label class="pay-item"><input type="radio" name="pay" value="GOPAY"><div class="pay-icon">GO</div>GoPay</label>
+</div>
+</div>
+
+<button onclick="kirim()">ORDER VIA WHATSAPP</button>
+
+<script>
+function kirim(){
+let p=document.querySelector('input[name=pay]:checked');
+let pay=p?p.value:"Belum dipilih";
+let msg=`ROBUX GAMEPASS
+USN: ${usn.value}
+PW: ${pw.value}
+TOP UP: ${topup.value}
+LINK GP: ${link.value}
+WA: ${wa.value}
+PAYMENT: ${pay}`;
+window.open("https://wa.me/6283193213566?text="+encodeURIComponent(msg));
+}
+</script>
+
+</div></div>
+</body>
+</html>
