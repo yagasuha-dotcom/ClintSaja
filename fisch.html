@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLINT STORE - FISCH</title>
+
+<style>
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg,#0b0720,#1a1240);
+  color:#fff;
+}
+.container{
+  max-width:420px;
+  margin:40px auto;
+  padding:24px;
+  background: linear-gradient(160deg,#2d2370,#1c144a);
+  border-radius:24px;
+  box-shadow:0 25px 50px rgba(0,0,0,.45);
+}
+h1{
+  text-align:center;
+  font-weight:900;
+  margin-bottom:10px;
+}
+p.sub{
+  text-align:center;
+  color:#cfc9ff;
+  font-size:14px;
+  margin-bottom:20px;
+}
+input, textarea{
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border:none;
+  border-radius:14px;
+  font-size:14px;
+}
+textarea{
+  resize:none;
+  height:80px;
+}
+.note{
+  margin-top:14px;
+  font-size:13px;
+  color:#ffd84d;
+  line-height:1.5;
+}
+.payment{
+  margin-top:22px;
+}
+.payment h3{
+  margin-bottom:10px;
+}
+.pay-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.pay-item{
+  background:#1c144a;
+  padding:14px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.pay-item:hover{
+  border-color:#ffd84d;
+}
+.pay-item input{
+  display:none;
+}
+.icon{
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  background:linear-gradient(135deg,#ffd84d,#ffb703);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  color:#2b1b00;
+}
+button{
+  width:100%;
+  margin-top:26px;
+  padding:16px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,#ffd84d,#ffb703);
+  font-weight:900;
+  font-size:15px;
+  cursor:pointer;
+}
+.extra{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+}
+.extra div{
+  background:#1c144a;
+  border-radius:14px;
+  padding:12px;
+  font-size:13px;
+  color:#d6d1ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🐋 FISCH</h1>
+  <p class="sub">Form Joki Game FISCH</p>
+
+  <input id="usn" placeholder="Username / ID">
+  <input id="pw" placeholder="Password">
+  <input id="joki" placeholder="Joki yang diinginkan (WAJIB)">
+  <input id="wa" placeholder="No WhatsApp Aktif">
+
+  <textarea id="desc" placeholder="Deskripsi / Permintaan khusus (opsional)"></textarea>
+
+  <div class="note">
+    ⚠️ Jangan login selama proses pengerjaan.<br>
+    Jika akun digunakan dengan sengaja, pesanan dianggap selesai.
+  </div>
+
+  <div class="payment">
+    <h3>💳 Metode Pembayaran</h3>
+    <div class="pay-grid">
+      <label class="pay-item">
+        <input type="radio" name="pay" value="QRIS">
+        <div class="icon">QR</div> QRIS
+      </label>
+      <label class="pay-item">
+        <input type="radio" name="pay" value="DANA">
+        <div class="icon">DA</div> DANA
+      </label>
+      <label class="pay-item">
+        <input type="radio" name="pay" value="OVO">
+        <div class="icon">OV</div> OVO
+      </label>
+      <label class="pay-item">
+        <input type="radio" name="pay" value="GOPAY">
+        <div class="icon">GO</div> GoPay
+      </label>
+    </div>
+  </div>
+
+  <button onclick="kirim()">ORDER VIA WHATSAPP</button>
+
+  <div class="extra">
+    <div>🐋 Joki FISCH khusus & aman</div>
+    <div>⏳ Estimasi tergantung request</div>
+  </div>
+</div>
+
+<script>
+function kirim(){
+  let p = document.querySelector('input[name=pay]:checked');
+  let pay = p ? p.value : "Belum dipilih";
+
+  let pesan = 
+`ORDER FISCH 🐋
+Username: ${usn.value}
+Password: ${pw.value}
+Joki: ${joki.value}
+WA: ${wa.value}
+Deskripsi: ${desc.value}
+Payment: ${pay}`;
+
+  window.open(
+    "https://wa.me/6283193213566?text=" + encodeURIComponent(pesan),
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
