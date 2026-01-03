@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLINT STORE - Blox Fruit</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(180deg,#0b0720,#1a1240);
+  color:#fff;
+}
+.wrap{padding:20px}
+.form{
+  background:linear-gradient(160deg,#2d2370,#1c144a);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 20px 45px rgba(0,0,0,.45);
+}
+h2{
+  text-align:center;
+  margin-bottom:18px;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border-radius:14px;
+  border:none;
+  font-size:15px;
+}
+
+/* NOTE */
+.note{
+  font-size:13px;
+  color:#ffd84d;
+  margin-top:14px;
+  line-height:1.5;
+}
+
+/* PAYMENT */
+.payment{margin-top:22px}
+.payment-title{
+  font-weight:800;
+  margin-bottom:12px;
+}
+.pay-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.pay-item{
+  background:#1c144a;
+  padding:16px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:.25s;
+}
+.pay-item:hover{
+  border-color:#ffd84d;
+}
+.pay-item input{display:none}
+
+.pay-icon{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ffd84d,#ffb703);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  color:#2b1b00;
+  font-size:15px;
+}
+
+.pay-text{
+  font-weight:800;
+  font-size:15px;
+}
+
+.pay-item input:checked + .pay-icon{
+  outline:3px solid #ffd84d;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  margin-top:26px;
+  padding:16px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(135deg,#ffd84d,#ffb703);
+  color:#2b1b00;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+/* INFO BAWAH */
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:24px;
+}
+.info-box{
+  background:#1c144a;
+  border-radius:16px;
+  padding:14px;
+  font-size:13px;
+  color:#d6d1ff;
+  line-height:1.5;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="form">
+
+    <h2>🐲 Blox Fruit Order</h2>
+
+    <input id="usn" placeholder="Username / ID">
+    <input id="pw" placeholder="Password">
+    <input id="joki" placeholder="Joki yang diinginkan">
+    <input id="wa" placeholder="WhatsApp Aktif">
+
+    <div class="note">
+      ⚠️ Jangan login selama pengerjaan.<br>
+      Jika digunakan dengan sengaja, pesanan dianggap selesai.
+    </div>
+
+    <!-- PAYMENT (ANTI ERROR) -->
+    <div class="payment">
+      <div class="payment-title">💳 Metode Pembayaran</div>
+
+      <div class="pay-grid">
+        <label class="pay-item">
+          <input type="radio" name="pay" value="QRIS">
+          <div class="pay-icon">QR</div>
+          <div class="pay-text">QRIS</div>
+        </label>
+
+        <label class="pay-item">
+          <input type="radio" name="pay" value="DANA">
+          <div class="pay-icon">DA</div>
+          <div class="pay-text">DANA</div>
+        </label>
+
+        <label class="pay-item">
+          <input type="radio" name="pay" value="OVO">
+          <div class="pay-icon">OV</div>
+          <div class="pay-text">OVO</div>
+        </label>
+
+        <label class="pay-item">
+          <input type="radio" name="pay" value="GOPAY">
+          <div class="pay-icon">GO</div>
+          <div class="pay-text">GoPay</div>
+        </label>
+      </div>
+    </div>
+
+    <button onclick="kirim()">ORDER VIA WHATSAPP</button>
+
+    <div class="info-grid">
+      <div class="info-box">
+        🔐 <b>Keamanan Akun</b><br>
+        Data dijamin aman & tidak dibagikan.
+      </div>
+      <div class="info-box">
+        ⏳ <b>Estimasi Pengerjaan</b><br>
+        Bergantung tingkat kesulitan & antrian.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function kirim(){
+  let pay = document.querySelector('input[name="pay"]:checked');
+  let metode = pay ? pay.value : "Belum dipilih";
+
+  let msg =
+`BLOX FRUIT ORDER
+USN: ${usn.value}
+PW: ${pw.value}
+JOKI: ${joki.value}
+WA: ${wa.value}
+PEMBAYARAN: ${metode}
+
+NOTE:
+Jangan login selama pengerjaan`;
+
+  window.open(
+    "https://wa.me/6283193213566?text=" +
+    encodeURIComponent(msg),
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
